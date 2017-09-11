@@ -5,4 +5,4 @@ install:
  - python -m pip install --upgrade pip
  - pip install -r requirements.txt
 script:
- - python scripts/gamecomponents/test/TestMallet.py
+ - python scripts/gamecomponents/tests/TestMallet.py
