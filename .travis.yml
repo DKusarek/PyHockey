@@ -1,8 +1,11 @@
 language: python
 python:
  - "2.7"
+virtualenv:
+  system_site_packages: true
 install:
  - python -m pip install --upgrade pip
+ - pip install coverage
  - pip install -r requirements.txt
 script:
- - python scripts/gamecomponents/tests/test_TestPhysicsObject.py
+ - coverage run scripts/gamecomponents/tests/test_TestPhysicsObject.py
