@@ -1,6 +1,7 @@
 # PyHockey
 
 PyHockey is amazing computer game based on traditional air hockey game. You can play it using your keyboard, as well as using web cam, a do some moves with your hand. Hope you enjoy this game.
+
 The game was created as a final project for class Python in the Enterprise on AGH University.
 <pic>
 
@@ -10,25 +11,26 @@ To run PyHockey you will be obligate to install Python 2.7 or newer (of course) 
 
 ### Installing
 
-Install pip [Link](https://pypi.python.org/pypi/pip) 
+* Install pip [Link](https://pypi.python.org/pypi/pip) 
 
-Install virtualenv
+* Install virtualenv
 
 ```
 $ sudo pip install virtualenv
 ```
 
-Install Pygame
+* Install Pygame
 
 ```
 $ sudo apt-get build-dep python-pygame
 ```
 
-Install OpenCv
+* Install OpenCv
 
 ```
 $ sudo apt-get install python-opencv
 ```
+
 
 To install the additional application you need to do:
 
