@@ -1,92 +1,61 @@
 # PyHockey
 
 PyHockey is amazing computer game based on traditional air hockey game. You can play it using your keyboard, as well as using web cam, a do some moves with your hand. Hope you enjoy this game.
-
-![](https://media.giphy.com/media/3o6MbnmMOr1N5jb7sA/giphy.gif)
+The game was created as a final project for class Python in the Enterprise on AGH University.
+<pic>
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+To run PyHockey you will be obligate to install Python 2.7 or newer (of course) and some additoinal packages.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Install pip [Link](https://pypi.python.org/pypi/pip) 
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Install virtualenv
 
 ```
-until finished
+$ sudo pip install virtualenv
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Install Pygame
+
+```
+$ sudo apt-get build-dep python-pygame
+```
+
+Install OpenCv
+
+```
+$ sudo apt-get install python-opencv
+```
+
+To install the additional application you need to do:
+
+```
+pip install -r requirements.txt
+```
 
 ## Running the tests
 
 To run test please use Travis integration service, project include .travis.yml file
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
 ## Authors
 
-* **Eryk Jarocki** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Dominika Kusarek** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Arkadiusz Michalik** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Jagoda Palwal** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Karolina Swistacz** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Eryk Jarocki** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Dominika Kusarek** - *Member of developers team* - [DKusarek](https://github.com/DKusarek)
+* **Arkadiusz Michalik** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jagoda Palwal** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Karolina Swistacz** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Conclusion
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Of course you can use this code, develop it, change, and use it in any way you'll find needed. If you want, feel free to let us know about your ideas.
+
+![](https://media.giphy.com/media/3o6MbnmMOr1N5jb7sA/giphy.gif)
+
 
