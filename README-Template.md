@@ -1,8 +1,8 @@
 # PyHockey
 
-PyHockey is amazing computer game based on traditional coin football game. You can play it using your keyboard, as well as using web cam, a do some moves with your hand. Hope you enjoy this game.
+PyHockey is amazing computer game based on traditional air hockey game. You can play it using your keyboard, as well as using web cam, a do some moves with your hand. Hope you enjoy this game.
 
-![](http://i.imgur.com/2tAksHG.gif)
+![](https://media.giphy.com/media/3o6MbnmMOr1N5jb7sA/giphy.gif)
 
 ## Getting Started
 
