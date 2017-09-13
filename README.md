@@ -36,7 +36,7 @@ $ sudo apt-get install python-opencv
 To install the additional application you need to do:
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Running the tests
