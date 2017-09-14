@@ -41,7 +41,7 @@ $ pip install -r requirements.txt
 
 ## Running the tests
 
-To run test please use Travis integration service, project include .travis.yml file
+To run test please use Travis integration service [![Build Status](https://travis-ci.org/DKusarek/PyHockey.svg?branch=master)](https://travis-ci.org/DKusarek/PyHockey)
 
 ## Authors
 
