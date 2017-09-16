@@ -46,7 +46,7 @@ To run test please use Travis integration service [![Build Status](https://travi
 
 ## Running the jupyter notebook
 
-To run test please first run parser.py then the notebook logs_parser.ipnb
+To run test please first run **parser.py** then the notebook **logs_parser.ipnb**
 
 
 ## Authors
