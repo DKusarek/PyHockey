@@ -43,6 +43,12 @@ $ pip install -r requirements.txt
 
 To run test please use Travis integration service [![Build Status](https://travis-ci.org/DKusarek/PyHockey.svg?branch=master)](https://travis-ci.org/DKusarek/PyHockey)
 
+
+## Running the jupyter notebook
+
+To run test please first run parser.py then the notebook logs_parser.ipnb
+
+
 ## Authors
 
 * **Eryk Jarocki** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
