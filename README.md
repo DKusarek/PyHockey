@@ -51,10 +51,10 @@ To run test please first run **parser.py** then the notebook **logs_parser.ipnb*
 
 ## Authors
 
-* **Eryk Jarocki** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Eryk Jarocki** - *Member of developers team* - [erykjarocki](https://github.com/erykjarocki)
 * **Dominika Kusarek** - *Member of developers team* - [DKusarek](https://github.com/DKusarek)
 * **Arkadiusz Michalik** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Jagoda Palwal** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jagoda Palwal** - *Member of developers team* - [jpalwal](https://github.com/jpalwal)
 * **Karolina Swistacz** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
 
 ## Conclusion
