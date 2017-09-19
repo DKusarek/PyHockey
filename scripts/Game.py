@@ -17,6 +17,7 @@ from scripts.gamecomponents.ScoreBoard import OutOfGameTimeException
 from scripts.gamecomponents.ScoreBoard import ScoreBoard
 from scripts.tracking.NaiveMarkerTracker import NaiveMarkerTracker
 from scripts.videocapture.VideoCapture import VideoCapture
+from scripts.gamecomponents.Kinematics import PhysicsObject
 
 
 class Game(object):
@@ -51,6 +52,68 @@ class Game(object):
                 if event.type == QUIT:
                     exit()
 
+        # choose kind of Pitch
+        self.screensize = (850, 300)
+        self.screen = pg.display.set_mode(self.screensize)
+        pg.display.set_caption("PyHockey")
+        self.screen.fill((0, 0, 0))
+        myfont = pg.font.Font(None, 25)
+        label = myfont.render(
+            "Press 1 to play hockey, press 2 to play football", 1, (255, 255, 0)
+        )
+
+        self.screen.blit(label, (100, 100))
+        pg.display.flip()
+        stop = 0
+        while stop == 0:
+            for event in pg.event.get():
+                if event.type == KEYDOWN and event.key == K_1:
+                    Logger.debug("Pitch: load_image Hockey Pitch")
+                    self.pitch = Pitch("resources/graphics/pitch.png")
+
+
+                    pitch_borders = [(self.pitch.i_min, self.pitch.i_max), (self.pitch.j_min, self.pitch.j_max)]
+                    self.players = [Player(Player.PLAYER_RED, self.pitch, False),
+                                    Player(Player.PLAYER_BLUE, self.pitch, False)]
+                    self.mallets = [self.players[0].mallet, self.players[1].mallet]
+                    self.players[0].mallet.load_image("resources/graphics/redmallet.png", "resources/graphics/bluemallet.png")
+                    self.players[1].mallet.load_image("resources/graphics/redmallet.png", "resources/graphics/bluemallet.png")
+                    self.discs = [Disc(Game.INIT_DISC1_X, Game.INIT_DISC1_Y, 1, Game.DISC_RADIUS, pitch_borders),
+                                  Disc(Game.INIT_DISC2_X, Game.INIT_DISC2_Y, 1, Game.DISC_RADIUS, pitch_borders)]
+
+
+                    self.objects = self.discs + self.mallets
+                    self.scoreboard = ScoreBoard(self.players[0], self.players[1])
+                    stop = 1
+                if event.type == KEYDOWN and event.key == K_2:
+                    Logger.debug("Pitch: load_image Football Pitch")
+                    self.pitch = Pitch("resources/graphics/football_board.png")
+                    self.players = [Player(Player.PLAYER_RED, self.pitch,True),
+                                    Player(Player.PLAYER_BLUE, self.pitch,True)]
+
+                    pitch_borders = [(self.pitch.i_min, self.pitch.i_max), (self.pitch.j_min, self.pitch.j_max)]
+                    self.mallets = [self.players[0].mallet, self.players[1].mallet]
+                    self.players[0].mallet.load_image("resources/graphics/messi_face.png", "resources/graphics/ronaldo_face.png")
+
+                    self.players[1].mallet.load_image("resources/graphics/messi_face.png", "resources/graphics/ronaldo_face.png")
+
+                    Disc.PICTURE_PATH = "resources/graphics/ball.png"
+                    disc_initX = 402
+                    disc_initY = 355
+                    self.discs = [Disc(disc_initX, disc_initY, 1, Game.DISC_RADIUS, pitch_borders)]
+                    self.objects = self.discs + self.mallets
+                    self.scoreboard = ScoreBoard(self.players[0], self.players[1])
+                    PhysicsObject.COEFFICIENT_OF_FRICTION = 0.93
+
+                    stop = 1
+                if event.type == QUIT:
+                    exit()
+
+
+
+
+
+
         Logger.info("GAME INIT: Initializing  Game Display (%s)", str(size))
         os.environ["SDL_VIDEO_CENTERED"] = "True"
         self.screensize = (int(size[0]), int(size[1]))
@@ -66,14 +129,8 @@ class Game(object):
 
         Logger.info("GAME INIT: Initializing Model...")
         # model part
-        self.pitch = Pitch()
-        self.players = [Player(Player.PLAYER_RED, self.pitch), Player(Player.PLAYER_BLUE, self.pitch)]
-        self.mallets = [self.players[0].mallet, self.players[1].mallet]
-        pitch_borders = [(self.pitch.i_min, self.pitch.i_max), (self.pitch.j_min, self.pitch.j_max)]
-        self.discs = [Disc(Game.INIT_DISC1_X, Game.INIT_DISC1_Y, 1, Game.DISC_RADIUS, pitch_borders),
-                      Disc(Game.INIT_DISC2_X, Game.INIT_DISC2_Y, 1, Game.DISC_RADIUS, pitch_borders)]
-        self.objects = self.discs + self.mallets
-        self.scoreboard = ScoreBoard(self.players[0], self.players[1])
+        # here was an old place of Pitch definition
+
 
         Logger.info("GAME INIT: Initializing Drawables...")
         # everything that will be drawn
