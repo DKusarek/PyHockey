@@ -2,13 +2,14 @@ from __future__ import division
 
 from scripts.Logger import Logger
 from scripts.gamecomponents.Vector import Vector
+import math
 
 
 class PhysicsObject(object):
-    COEFFICIENT_OF_FRICTION = 0.99
+    COEFFICIENT_OF_FRICTION = 0.98
     COEFFICIENT_OF_BORDER_COLLISION = 0.8
-    MAX_MALLET_VELOCITY = 25
-    MAX_DISC_VELOCITY = 50
+    MAX_MALLET_VELOCITY = 15
+    MAX_DISC_VELOCITY = 80
     STOPPING_VELOCITY = 0.1
 
     def __init__(self, x_init, y_init, mass, radius, borders):
@@ -91,11 +92,11 @@ class PhysicsObject(object):
         Logger.debug("KINEMATICS: border_collision axis=%s _vel=%s", str(axis), str(self._vel))
         if isinstance(self, Disc):
             if axis == 'x':
-                self._vel.x = -self._vel.x
+                self._vel.x = -self._vel.x #this is satisfying
                 self.collision_effect()
                 self.correct_position_in_borders()
             if axis == 'y':
-                self._vel.y = -self._vel.y
+                self._vel.y = -self._vel.y #this is satisfying
                 self.collision_effect()
                 self.correct_position_in_borders()
         Logger.debug("KINEMATICS: _vel=%s", str(self._vel))
@@ -103,7 +104,7 @@ class PhysicsObject(object):
     # TODO: Add unittests
     def circle_collision(self, object):
         from scripts.gamecomponents.Disc import Disc
-        if self._pos.get_distance(object.pos) <= self._radius + object.radius:
+        if self._pos.get_distance(object.pos) <= self._radius + object.radius: #impact
             Logger.debug("KINEMATICS: border_collision distance=%s self.radius=%s object.radius=%s",
                          str(self._pos.get_distance(object.pos)), str(self._radius), str(object.radius))
             vec_pos_diff = object.pos - self._pos
@@ -113,12 +114,26 @@ class PhysicsObject(object):
             vec_side = self._vel - vec_to
             obj_vec_side = object._vel - obj_vec_to
 
-            after_vec_to = (vec_to * (self._mass - object._mass) + (2 * object._mass * obj_vec_to)) / (
+            after_vec_to = (vec_to * (self._mass   - object._mass) + (2 * object._mass * obj_vec_to)) / (
                 self._mass + object._mass)
             after_obj_vec_to = (obj_vec_to * (object._mass - self._mass) + (2 * self._mass * vec_to)) / (
                 self._mass + object._mass)
 
-            # Change velocity only if it is Disc
+            # self._radius = 2 * math.atan2(self._pos[0],self._pos[1])
+            # object._radius = 2 * math.atan2(object._pos[0],object._pos[1])
+            # self._vel, object._vel = object._vel, self._vel
+            #
+            # self._vel *= self.COEFFICIENT_OF_BORDER_COLLISION
+            # object._vel *= self.COEFFICIENT_OF_BORDER_COLLISION
+            #
+            # self._pos[0] += math.sin(0.5 * math.pi + 2 * math.atan2(self._pos[0],self._pos[1]))
+            # self._pos[1] -= math.cos(0.5 * math.pi + 2 * math.atan2(self._pos[0], self._pos[1]))
+            # object._pos[0] += math.sin(0.5 * math.pi + 2 * math.atan2(object._pos[0],object._pos[1]))
+            # object._pos[1] -= math.cos(0.5 * math.pi + 2 * math.atan2(object._pos[0], object._pos[1]))
+
+
+
+           # Change velocity only if it is Disc
             if isinstance(self, Disc):
                 self._vel = after_vec_to + vec_side
             if isinstance(object, Disc):

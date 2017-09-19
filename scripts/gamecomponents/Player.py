@@ -20,31 +20,54 @@ class Player:
     # TODO: Decide value of max points in sth like game rules, probably implemented in another class
     MAX_POINTS = 10  # temp
 
-    def __init__(self, player_id, pitch):
+    def __init__(self, player_id, pitch, football ):
         """
         initializes Player object and creates underlying Mallet
         :param player_id: defines which player are you creating
         :param pitch: pitch is needed to calculate borders for mallet
         :return:
         """
-        if player_id == Player.PLAYER_RED:
-            Logger.info("PLAYER: initializing PLAYER_RED")
-            self.playerColor = Player.PLAYER_RED
-            self._borders = ((pitch.i_min, (pitch.i_min + pitch.i_max) / 2), (pitch.j_min, pitch.j_max))
-            self._center = (200, 300)
-            self._goal_to_score = pitch.get_right_goal()  # opponent's goal
-        else:
-            Logger.info("PLAYER: initializing PLAYER_BLUE")
-            self.playerColor = Player.PLAYER_BLUE
-            self._borders = (((pitch.i_min + pitch.i_max) / 2, pitch.i_max), (pitch.j_min, pitch.j_max))
-            self._center = (600, 300)
-            self._goal_to_score = pitch.get_left_goal()
+        if football == False:
+            if player_id == Player.PLAYER_RED:
+                Logger.info("PLAYER: initializing PLAYER_RED")
+                self.playerColor = Player.PLAYER_RED
+                self._borders = ((pitch.i_min, (pitch.i_min + pitch.i_max) / 2), (pitch.j_min, pitch.j_max))
+                self._center = (200, 355)
+                self._goal_to_score = pitch.get_right_goal()  # opponent's goal
+                print("hokej")
+            else:
+                Logger.info("PLAYER: initializing PLAYER_BLUE")
+                self.playerColor = Player.PLAYER_BLUE
+                self._borders = (((pitch.i_min + pitch.i_max) / 2, pitch.i_max), (pitch.j_min, pitch.j_max))
+                self._center = (600, 355)
+                self._goal_to_score = pitch.get_left_goal()
 
-        self._points = 0
-        self._name = ''
-        self._player_id = player_id
+            self._points = 0
+            self._name = ''
+            self._player_id = player_id
 
-        self._mallet = Mallet(20.5, self._center[0], self._center[1], 100, self, self._borders)
+            self._mallet = Mallet(20.5, self._center[0], self._center[1], 100, self, self._borders)
+        if football == True:
+            if player_id == Player.PLAYER_RED:
+                Logger.info("PLAYER: initializing PLAYER_RED")
+                self.playerColor = Player.PLAYER_RED
+                self._borders = ((pitch.i_min, (pitch.i_min + pitch.i_max)), (pitch.j_min, pitch.j_max))
+                self._center = (200, 355)
+                self._goal_to_score = pitch.get_right_goal()  # opponent's goal
+                print("football")
+            else:
+                Logger.info("PLAYER: initializing PLAYER_BLUE")
+                self.playerColor = Player.PLAYER_BLUE
+                self._borders = ((pitch.i_min, pitch.i_max), (pitch.j_min, pitch.j_max))
+                self._center = (600, 355)
+                self._goal_to_score = pitch.get_left_goal()
+
+            self._points = 0
+            self._name = ''
+            self._player_id = player_id
+
+            self._mallet = Mallet(20.5, self._center[0], self._center[1], 100, self, self._borders)
+
 
     @property
     def name(self):
@@ -103,3 +126,7 @@ class Player:
 
     def printTooManyPointsInfo(self):
         print("Player " + self.name + " has won scoring " + str(self.MAX_POINTS) + " points.")
+
+
+
+

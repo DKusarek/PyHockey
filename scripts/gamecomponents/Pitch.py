@@ -30,7 +30,7 @@ class Pitch(Drawable):
     class represent a pitch on which the game will take a place
     """
 
-    def __init__(self):
+    def __init__(self,pitch_name):
         """
         define constructor of class Pitch.
         """
@@ -52,7 +52,8 @@ class Pitch(Drawable):
         # drawable part
         # TODO better pitch image
         Logger.info("PITCH: loading image")
-        self._image = pygame.image.load("resources/graphics/pitch.png")
+        #self._image = pygame.image.load("resources/graphics/pitch.png")
+        self._image = pygame.image.load(pitch_name)
         self._pos = Vector(0, 0)
 
     # TODO: add unittests
@@ -95,7 +96,7 @@ class Pitch(Drawable):
 
     def right_half(self, ii, r):
         """
-        check in which half of the pitch the disk is situated
+        check on which half of the pitch the disk is situated
         :param ii: x coordinates of disk
         :return: true if the disk is on right player half of pitch, false if it is not
         :raise: WrongTypeException if ii or r is not type of int, OutOfRangeException if disk is out of pitch

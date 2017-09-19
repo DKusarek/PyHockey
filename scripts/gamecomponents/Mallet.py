@@ -22,7 +22,7 @@ class Mallet(MalletInterface, PhysicsObject, Drawable):
         MalletInterface.__init__(self)
         PhysicsObject.__init__(self, pos_x, pos_y, mass, radius, borders)
         self._player = player
-        self.load_image()
+        # old line of load image self.load_image()
 
     @property
     def image(self):
@@ -64,7 +64,7 @@ class Mallet(MalletInterface, PhysicsObject, Drawable):
         self.correct_position_in_borders()
         Logger.debug("MALLET: move_to(%s,%s) pos after position correction=%s", str(x), str(y), str(self._pos))
 
-    def load_image(self):
+    def load_image(self, image1, image2):
         """
         Method used to load sprite for Mallet according to Player.
         :return: None
@@ -72,10 +72,10 @@ class Mallet(MalletInterface, PhysicsObject, Drawable):
         from Player import Player
         if self._player.playerColor == Player.PLAYER_BLUE:
             Logger.debug("MALLET: load_image playerColor = PLAYER_BLUE")
-            image = "resources/graphics/bluemallet.png"
+            image = image1
         elif self._player.playerColor == Player.PLAYER_RED:
             Logger.debug("MALLET: load_image playerColor = PLAYER_RED")
-            image = "resources/graphics/redmallet.png"
+            image = image2
         else:
             Logger.error("MALLET: Invalid value for player (" + self._player.playerColor + ")")
             raise ValueError('Invalid value for player (' + self._player.playerColor + ')')
