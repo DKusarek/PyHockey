@@ -3,7 +3,7 @@
 PyHockey is amazing computer game based on traditional air hockey. You can play it using your keyboard, as well as using your hand with turn on web cam. Hope you enjoy.
 
 The game was created as a final project for class Python in the Enterprise on AGH University.
-![](https://github.com/DKusarek/PyHockey/blob/master/resources/graphics/pitch2.png)
+![](https://github.com/DKusarek/PyHockey/blob/master/resources/graphics/football_board.png)
 
 
 ## Getting Started
