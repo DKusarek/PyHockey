@@ -55,7 +55,7 @@ To run test please first run **parser.py** then the notebook **logs_parser.ipnb*
 * **Dominika Kusarek** - *Member of developers team* - [DKusarek](https://github.com/DKusarek)
 * **Arkadiusz Michalik** - *Member of developers team* - [ArekMich](https://github.com/ArekMich)
 * **Jagoda Palwal** - *Member of developers team* - [jpalwal](https://github.com/jpalwal)
-* **Karolina Swistacz** - *Member of developers team* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Karolina Swistacz** - *Member of developers team* - [5swistacz](https://github.com/5swistacz)
 
 ## Conclusion
 
