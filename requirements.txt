@@ -1,3 +1,4 @@
 mock
 numpy
 unittest2
+plotly
