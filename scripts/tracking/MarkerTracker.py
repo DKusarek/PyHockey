@@ -24,6 +24,7 @@ class MarkerTracker(AbstractMarkerTracker):
         self.player_red.append(np.array([10,255,255], dtype=np.uint8))  # up hsv limit
         self.player_red.append(np.array([170,50,50], dtype=np.uint8))  # low hsv limit
         self.player_red.append(np.array([180,255,255], dtype=np.uint8))  # up hsv limit
+
     def get_markers_positions(self, frame):
         for player, limit in self.data.iteritems():
             cv2.imshow('frame', frame)
@@ -43,16 +44,16 @@ class MarkerTracker(AbstractMarkerTracker):
             mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8))
             mask = cv2.medianBlur(mask, 5)
             contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-            maximumArea = 0
-            bestContour = None
+            maximum_area = 0
+            best_contour = None
             for contour in contours:
-                currentArea = cv2.contourArea(contour)
-                if currentArea > maximumArea:
-                    bestContour = contour
-                    maximumArea = currentArea
+                current_area = cv2.contourArea(contour)
+                if current_area > maximum_area:
+                    best_contour = contour
+                    maximum_area = current_area
 
             if bestContour is not None:
-                M = cv2.moments(bestContour)
+                M = cv2.moments(best_contour)
                 x, y = int(M['m10'] / M['m00']), int(M['m01'] / M['m00'])
                 if player == 'player_blue':
                     self.p2 = (int(x * self.GAME_SIZE[0] / self.VIDEO_SIZE[0] + self.GAME_SIZE[0] / 2),

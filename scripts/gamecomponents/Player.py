@@ -20,14 +20,14 @@ class Player:
     # TODO: Decide value of max points in sth like game rules, probably implemented in another class
     MAX_POINTS = 10  # temp
 
-    def __init__(self, player_id, pitch, football ):
+    def __init__(self, player_id, pitch, football):
         """
         initializes Player object and creates underlying Mallet
         :param player_id: defines which player are you creating
         :param pitch: pitch is needed to calculate borders for mallet
         :return:
         """
-        if football == False:
+        if football == false:
             if player_id == Player.PLAYER_RED:
                 Logger.info("PLAYER: initializing PLAYER_RED")
                 self.playerColor = Player.PLAYER_RED
@@ -47,7 +47,7 @@ class Player:
             self._player_id = player_id
 
             self._mallet = Mallet(20.5, self._center[0], self._center[1], 100, self, self._borders)
-        if football == True:
+        if football == true:
             if player_id == Player.PLAYER_RED:
                 Logger.info("PLAYER: initializing PLAYER_RED")
                 self.playerColor = Player.PLAYER_RED
@@ -67,7 +67,6 @@ class Player:
             self._player_id = player_id
 
             self._mallet = Mallet(20.5, self._center[0], self._center[1], 100, self, self._borders)
-
 
     @property
     def name(self):

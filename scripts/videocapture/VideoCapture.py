@@ -12,15 +12,17 @@ class VideoCapture(AbstractVideoCapture):
         self.failedFramesLimit = 10
 
     def get_frame(self):
-        failedFrames = 0
+        failed_frames = 0
         while True:
             ret, frame = self.cap.read()
-            if ret == True:
+            if ret == true:
                 break
 
-            failedFrames = failedFrames + 1
-            if failedFrames > self.failedFramesLimit:
-                raise Exception("VideoCapture cannot receive stable video stream. Possible reason is camera driver issue.")
+            failed_frames = failed_frames + 1
+            if failed_frames > self.failedFramesLimit:
+                raise Exception(
+                    "VideoCapture cannot receive stable video stream. Possible reason is camera driver issue."
+                )
 
         frame = cv2.resize(cv2.flip(frame, 1), self.VIDEO_SIZE)  # vertical flip+ resize
         return frame

@@ -1,7 +1,11 @@
 import os
 import validator
 
+
 class LogParser:
+    def __init__(self):
+        pass
+
     @staticmethod
     def parse_log(input_file, string_to_find):
         if os.path.isfile(input_file):

@@ -105,7 +105,7 @@ class PhysicsObject(object):
     # TODO: Add unittests
     def circle_collision(self, object):
         from scripts.gamecomponents.Disc import Disc
-        if self._pos.get_distance(object.pos) <= self._radius + object.radius: #impact
+        if self._pos.get_distance(object.pos) <= self._radius + object.radius:  # impact
             Logger.debug("KINEMATICS: border_collision distance=%s self.radius=%s object.radius=%s",
                          str(self._pos.get_distance(object.pos)), str(self._radius), str(object.radius))
             vec_pos_diff = object.pos - self._pos
@@ -115,18 +115,17 @@ class PhysicsObject(object):
             vec_side = self._vel - vec_to
             obj_vec_side = object._vel - obj_vec_to
 
-            after_vec_to = (vec_to * (self._mass   - object._mass) + (2 * object._mass * obj_vec_to)) / (
+            after_vec_to = (vec_to * (self._mass - object._mass) + (2 * object._mass * obj_vec_to)) / (
                 self._mass + object._mass)
             after_obj_vec_to = (obj_vec_to * (object._mass - self._mass) + (2 * self._mass * vec_to)) / (
                 self._mass + object._mass)
-
 
             dx = self._pos[0] - object._pos[0]
             dy = self._pos[1] - object._pos[1]
             distance = math.hypot(dx,dy)
             tangent = math.atan2(dy,dx)
-            #self._radius = 2*tangent - self._radius
-            #object._radius = 2*tangent - object._radius
+            # self._radius = 2*tangent - self._radius
+            # object._radius = 2*tangent - object._radius
             (self._vel, object._vel) = (object._vel, self._vel)
             angle = 0.5 * math.pi + tangent
 

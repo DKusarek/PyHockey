@@ -21,26 +21,26 @@ class NaiveMarkerTracker(AbstractMarkerTracker):
 
     def __get_the_most_blue_position(self, frame):
         # OpenCV uses BGR not RGB !!!
-        redFrame = cv2.extractChannel(frame, 2)
-        greenFrame = cv2.extractChannel(frame, 1)
-        blueFrame = cv2.extractChannel(frame, 0)
+        red_frame = cv2.extractChannel(frame, 2)
+        green_frame = cv2.extractChannel(frame, 1)
+        blue_frame = cv2.extractChannel(frame, 0)
 
-        redGreenComponents = cv2.addWeighted(redFrame, 0.5, greenFrame, 0.5, 0)
-        uniformBlueFrame = cv2.subtract(blueFrame, redGreenComponents)
+        red_green_components = cv2.addWeighted(red_frame, 0.5, green_frame, 0.5, 0)
+        uniform_blue_frame = cv2.subtract(blue_frame, red_green_components)
 
-        minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(uniformBlueFrame)
+        minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(uniform_blue_frame)
 
         return maxLoc
 
     def __get_the_most_red_position(self, frame):
         # OpenCV uses BGR not RGB !!!
-        redFrame = cv2.extractChannel(frame, 2)
-        greenFrame = cv2.extractChannel(frame, 1)
-        blueFrame = cv2.extractChannel(frame, 0)
+        red_frame = cv2.extractChannel(frame, 2)
+        green_frame = cv2.extractChannel(frame, 1)
+        blue_frame = cv2.extractChannel(frame, 0)
 
-        blueGreenComponents = cv2.addWeighted(blueFrame, 0.5, greenFrame, 0.5, 0)
-        uniformRedFrame = cv2.subtract(redFrame, blueGreenComponents)
+        blue_green_components = cv2.addWeighted(blue_frame, 0.5, green_frame, 0.5, 0)
+        uniform_red_frame = cv2.subtract(red_frame, blue_green_components)
 
-        minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(uniformRedFrame)
+        minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(uniform_red_frame)
 
         return maxLoc

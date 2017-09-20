@@ -1,4 +1,3 @@
-__author__ = 'Asia'
 from scripts.Logger import Logger
 
 

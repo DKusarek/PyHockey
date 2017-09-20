@@ -71,16 +71,16 @@ class Game(object):
                     Logger.debug("Pitch: load_image Hockey Pitch")
                     self.pitch = Pitch("resources/graphics/pitch.png")
 
-
                     pitch_borders = [(self.pitch.i_min, self.pitch.i_max), (self.pitch.j_min, self.pitch.j_max)]
                     self.players = [Player(Player.PLAYER_RED, self.pitch, False),
                                     Player(Player.PLAYER_BLUE, self.pitch, False)]
                     self.mallets = [self.players[0].mallet, self.players[1].mallet]
-                    self.players[0].mallet.load_image("resources/graphics/redmallet.png", "resources/graphics/bluemallet.png")
-                    self.players[1].mallet.load_image("resources/graphics/redmallet.png", "resources/graphics/bluemallet.png")
+                    self.players[0].mallet.load_image("resources/graphics/redmallet.png",
+                                                      "resources/graphics/bluemallet.png")
+                    self.players[1].mallet.load_image("resources/graphics/redmallet.png",
+                                                      "resources/graphics/bluemallet.png")
                     self.discs = [Disc(Game.INIT_DISC1_X, Game.INIT_DISC1_Y, 1, Game.DISC_RADIUS, pitch_borders),
                                   Disc(Game.INIT_DISC2_X, Game.INIT_DISC2_Y, 1, Game.DISC_RADIUS, pitch_borders)]
-
 
                     self.objects = self.discs + self.mallets
                     self.scoreboard = ScoreBoard(self.players[0], self.players[1])
@@ -93,9 +93,11 @@ class Game(object):
 
                     pitch_borders = [(self.pitch.i_min, self.pitch.i_max), (self.pitch.j_min, self.pitch.j_max)]
                     self.mallets = [self.players[0].mallet, self.players[1].mallet]
-                    self.players[0].mallet.load_image("resources/graphics/messi_face.png", "resources/graphics/ronaldo_face.png")
+                    self.players[0].mallet.load_image("resources/graphics/messi_face.png",
+                                                      "resources/graphics/ronaldo_face.png")
 
-                    self.players[1].mallet.load_image("resources/graphics/messi_face.png", "resources/graphics/ronaldo_face.png")
+                    self.players[1].mallet.load_image("resources/graphics/messi_face.png",
+                                                      "resources/graphics/ronaldo_face.png")
 
                     Disc.PICTURE_PATH = "resources/graphics/ball.png"
                     disc_initX = 402
@@ -108,11 +110,6 @@ class Game(object):
                     stop = 1
                 if event.type == QUIT:
                     exit()
-
-
-
-
-
 
         Logger.info("GAME INIT: Initializing  Game Display (%s)", str(size))
         os.environ["SDL_VIDEO_CENTERED"] = "True"
@@ -130,7 +127,6 @@ class Game(object):
         Logger.info("GAME INIT: Initializing Model...")
         # model part
         # here was an old place of Pitch definition
-
 
         Logger.info("GAME INIT: Initializing Drawables...")
         # everything that will be drawn

@@ -1,9 +1,6 @@
 import pygame
 
 from scripts.gamecomponents.DrawableInterface import Drawable
-
-__author__ = 'Asia'
-
 from scripts.gamecomponents.Goal import Goal
 from scripts.gamecomponents.Disc import Disc
 from scripts.gamecomponents.Mallet import Mallet
@@ -52,7 +49,7 @@ class Pitch(Drawable):
         # drawable part
         # TODO better pitch image
         Logger.info("PITCH: loading image")
-        #self._image = pygame.image.load("resources/graphics/pitch.png")
+        # self._image = pygame.image.load("resources/graphics/pitch.png")
         self._image = pygame.image.load(pitch_name)
         self._pos = Vector(0, 0)
 

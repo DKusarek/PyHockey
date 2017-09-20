@@ -32,7 +32,7 @@ class Vector(object):
         else:
             raise IndexError("Invalid subscript " + str(key) + " to Vector")
 
-    # String representaion (for debugging)
+    # String representation (for debugging)
     def __repr__(self):
         return 'Vector(%s, %s)' % (self.x, self.y)
 
