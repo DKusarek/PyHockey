@@ -58,3 +58,4 @@ if myValidator.validate():
         end_time_m = (60 - (int(init_time[3]+init_time[4])+1)) + int(end_time[3]+end_time[4]) + check
     file_for_game_timelines = open('timeline.csv', 'w')
     file_for_game_timelines.write(str(end_time_m)+'\n'+str(end_time_s)+'\n'+str(end_time_ss))
+    file_for_game_timelines.close()
