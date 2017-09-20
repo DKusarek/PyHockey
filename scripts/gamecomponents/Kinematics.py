@@ -89,14 +89,15 @@ class PhysicsObject(object):
     # TODO: Add unittests
     def border_collision(self, axis):
         from scripts.gamecomponents.Disc import Disc
+        COEFICIENT_OF_BOUNCE = 0.95
         Logger.debug("KINEMATICS: border_collision axis=%s _vel=%s", str(axis), str(self._vel))
         if isinstance(self, Disc):
             if axis == 'x':
-                self._vel.x = -self._vel.x #this is satisfying
+                self._vel.x = -self._vel.x * COEFICIENT_OF_BOUNCE
                 self.collision_effect()
                 self.correct_position_in_borders()
             if axis == 'y':
-                self._vel.y = -self._vel.y #this is satisfying
+                self._vel.y = -self._vel.y * COEFICIENT_OF_BOUNCE
                 self.collision_effect()
                 self.correct_position_in_borders()
         Logger.debug("KINEMATICS: _vel=%s", str(self._vel))
@@ -119,21 +120,17 @@ class PhysicsObject(object):
             after_obj_vec_to = (obj_vec_to * (object._mass - self._mass) + (2 * self._mass * vec_to)) / (
                 self._mass + object._mass)
 
-            # self._radius = 2 * math.atan2(self._pos[0],self._pos[1])
-            # object._radius = 2 * math.atan2(object._pos[0],object._pos[1])
-            # self._vel, object._vel = object._vel, self._vel
-            #
-            # self._vel *= self.COEFFICIENT_OF_BORDER_COLLISION
-            # object._vel *= self.COEFFICIENT_OF_BORDER_COLLISION
-            #
-            # self._pos[0] += math.sin(0.5 * math.pi + 2 * math.atan2(self._pos[0],self._pos[1]))
-            # self._pos[1] -= math.cos(0.5 * math.pi + 2 * math.atan2(self._pos[0], self._pos[1]))
-            # object._pos[0] += math.sin(0.5 * math.pi + 2 * math.atan2(object._pos[0],object._pos[1]))
-            # object._pos[1] -= math.cos(0.5 * math.pi + 2 * math.atan2(object._pos[0], object._pos[1]))
 
+            dx = self._pos[0] - object._pos[0]
+            dy = self._pos[1] - object._pos[1]
+            distance = math.hypot(dx,dy)
+            tangent = math.atan2(dy,dx)
+            #self._radius = 2*tangent - self._radius
+            #object._radius = 2*tangent - object._radius
+            (self._vel, object._vel) = (object._vel, self._vel)
+            angle = 0.5 * math.pi + tangent
 
-
-           # Change velocity only if it is Disc
+            # Change velocity only if it is Disc
             if isinstance(self, Disc):
                 self._vel = after_vec_to + vec_side
             if isinstance(object, Disc):
@@ -141,3 +138,7 @@ class PhysicsObject(object):
 
             self.apply_speed_limit()
             self.correct_position_post_collision(object)
+            self._pos[0] += math.sin(angle)
+            self._pos[1] -= math.cos(angle)
+            object._pos[0] -= math.sin(angle)
+            object._pos[1] += math.cos(angle)
